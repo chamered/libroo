@@ -47,6 +47,27 @@ server.post("/dashboard", (req, res) => {
     });
 });
 
+server.delete("/dashboard/:id", (req, res) => {
+    const bookID = Number(req.params.id);
+
+    fs.readFile(filePath, "utf8", (err, jsonData) => {
+        if (err) return res.status(500).json({ error: "Error reading file" });
+
+        let books = JSON.parse(jsonData);
+
+        const filteredBooks = books.filter(book => book.id !== bookID);
+
+        if (filteredBooks.length === books.length) {
+            return res.status(404).json({ error: "Book not found" });
+        }
+
+        fs.writeFile(filePath, JSON.stringify(filteredBooks, null, 2), (err) => {
+            if (err) return res.status(500).json({ error: "Error writing file" });
+            res.status(200).json({ message: "Book deleted" });
+        });
+    });
+});
+
 server.listen(PORT, () => {
     console.log(`Server is listening at port ${PORT}`);
 });

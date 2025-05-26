@@ -19,8 +19,25 @@ function Dashboard() {
         setShwoBookForm(false);
     }
 
+    const handleDeleteBook = (bookID) => {
+        const confirmDelete = window.confirm("Are you sure you want to delete this book?");
+        if (!confirmDelete) return;
+
+        fetch(`http://localhost:3001/dashboard/${bookID}`, {
+            method: "DELETE",
+        })
+            .then(res => {
+                if (!res.ok) throw new Error("Failed to delete book");
+                setBooks(prevBooks => prevBooks.filter(book => book.id !== bookID));
+            })
+            .catch(err => {
+                console.error(err);
+                alert("Error deleting book");
+            });
+    }
+
     const renderTabContent = () => {
-        return <Tab tab={activeTab} books={books}/>
+        return <Tab tab={activeTab} books={books} onDelete={handleDeleteBook}/>
     }
 
     return(

@@ -1,6 +1,6 @@
 import BookCard from './BookCard';
 
-function Tab({books, tab}) {
+function Tab({books, tab, onDelete}) {
     const filterBooks = () => {
         switch(tab) {
             case "to-read":
@@ -19,7 +19,7 @@ function Tab({books, tab}) {
             <div className="row">
                 {console.log(filterBooks())}
                 {filterBooks().map(book => (
-                    <BookCard book={book} key={book.id} />
+                    <BookCard book={book} key={book.id} onDelete={onDelete} />
                 ))}
             </div>
         </div>
