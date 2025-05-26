@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "title": "1984",
+    "author": "George Orwell",
+    "status": 3,
+    "rating": 5,
+    "notes": "A chilling vision of a dystopian future that still resonates today."
+  },
+  {
+    "id": 2,
+    "title": "The Hobbit",
+    "author": "J.R.R. Tolkien",
+    "status": 1,
+    "rating": 0,
+    "notes": "Expecting a whimsical adventure with rich world-building."
+  },
+  {
+    "id": 3,
+    "title": "Pride and Prejudice",
+    "author": "Jane Austen",
+    "status": 2,
+    "rating": 0,
+    "notes": "Looking forward to classic romance and wit."
+  },
+  {
+    "id": 4,
+    "title": "The Catcher in the Rye",
+    "author": "J.D. Salinger",
+    "status": 3,
+    "rating": 4,
+    "notes": "A raw and honest portrayal of teenage alienation."
+  },
+  {
+    "id": 5,
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "status": 3,
+    "rating": 5,
+    "notes": "A haunting tale of ambition, wealth, and the American Dream."
+  },
+  {
+    "id": 6,
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "status": 1,
+    "rating": 0,
+    "notes": "Expecting powerful themes of justice and morality."
+  },
+  {
+    "id": 7,
+    "title": "Brave New World",
+    "author": "Aldous Huxley",
+    "status": 2,
+    "rating": 0,
+    "notes": "Intrigued by its exploration of a controlled utopia."
+  },
+  {
+    "id": 8,
+    "title": "The 100",
+    "author": "Kass Morgan",
+    "status": 3,
+    "rating": 3,
+    "notes": "A fast-paced YA sci-fi survival story with moral complexity."
+  },
+  {
+    "id": 9,
+    "title": "Moby-Dick",
+    "author": "Herman Melville",
+    "status": 2,
+    "rating": 0,
+    "notes": "Expecting a dense but rewarding literary journey."
+  },
+  {
+    "id": 10,
+    "title": "Fahrenheit 451",
+    "author": "Ray Bradbury",
+    "status": 3,
+    "rating": 4,
+    "notes": "A thought-provoking critique of censorship and conformity."
+  }
+]
