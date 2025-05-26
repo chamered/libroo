@@ -63,6 +63,8 @@ Make sure you have the following installed:
 libroo/
 │
 ├── backend/
+│   ├── routes/
+│   │   └── dashboard.js
 │   ├── books.json
 │   ├── package.json
 │   └── server.js
