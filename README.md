@@ -63,7 +63,7 @@ Make sure you have the following installed:
    - Frontend will run on [http://localhost:5173](http://localhost:5173)  
    - Backend will run on [http://localhost:3001](http://localhost:3001)
 
-## 📁 Project Structure (To Be Completed)
+## 📁 Project Structure
 
 ```
 libroo/
@@ -107,6 +107,31 @@ libroo/
 └── README.md
 ```
 
+## 📡 API
+The backend provides a simple REST API for managing your book list. It interacts with a `books.json` file and supports basic CRUD operations. It is developed using express' router and all the routes are defined in the [route handlers folder](./backend/routes/).
+
+**Base URL:** `http://localhost:3001`
+### Endpoints
+- **GET `/dashboard`**  
+    Returns the list of all books.
+    
+- **POST `/dashboard`**  
+    Adds a new book.  
+    **Body JSON:**
+     ```javascript
+     {
+        "id": 1,            // Unique ID
+        "title": "Title",   // Book title
+        "author": "Author", // Author of the book
+        "status": 3,        // 1: "To Read", 2: "Reading", 3: "Read"
+        "rating": 4,        // Range 0-5
+        "notes": "Notes"    // Optional notes
+     }
+     ```
+    
+- **DELETE `/dashboard/:id`**  
+    Deletes the book with the specified `id`.
+
 ## 📌 TODO
 
 - [ ] Login system  
@@ -114,21 +139,6 @@ libroo/
 - [ ] Edit book system
 - [x] Delete book system 
 - [ ] Responsive design improvements
-
-## 📡 API
-The backend provides a simple REST API for managing your book list. It interacts with a `books.json` file and supports basic CRUD operations. It is developed using express' router and all the routes are defined in the [route handlers folder](./backend/routes/).
-
-**Base URL:** `http://localhost:3001`
-### Endpoints
-- **GET `/dashboard`**  
-    Restituisce la lista dei libri.
-    
-- **POST `/dashboard`**  
-    Aggiunge un nuovo libro.  
-    **Body JSON:** `{ "title": "Titolo", "author": "Autore" }`
-    
-- **DELETE `/dashboard/:id`**  
-    Elimina il libro con ID specifico.
 
 ## 🤝 Contributing
 
