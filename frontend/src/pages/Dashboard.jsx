@@ -1,24 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Tab from "../components/Tab";
 import AddBookForm from "../components/AddBookForm";
 
 function Dashboard() {
     const [activeTab, setActiveTab] = useState("all-books")
     const [showBookForm, setShwoBookForm] = useState(false);
+    const [books, setBooks] = useState([]);
+
+    useEffect(() => {
+        fetch("http://localhost:3001/dashboard")
+            .then(res => res.json())
+            .then(setBooks)
+            .catch(err => console.error("Error in fetch: ", err));
+    }, []);
+
+    const handleSaveBook = (newBook) => {
+        setBooks(prev => [...prev, newBook]);
+        setShwoBookForm(false);
+    }
 
     const renderTabContent = () => {
-        switch(activeTab) {
-            case "all-books":
-                return <Tab tab={0}/>;
-            case "to-read":
-                return <Tab tab={1}/>;
-            case "reading":
-                return <Tab tab={2}/>;
-            case "read":
-                return <Tab tab={3}/>;
-            default:
-                return <Tab tab={0}/>;
-        }
+        return <Tab tab={activeTab} books={books}/>
     }
 
     return(
@@ -73,7 +75,7 @@ function Dashboard() {
             <div>
                 {renderTabContent()}
             </div>
-            {showBookForm && <AddBookForm onCancel={() => setShwoBookForm(false)}/>}
+            {showBookForm && <AddBookForm onCancel={() => setShwoBookForm(false)} onSave={handleSaveBook}/>}
         </div>
     );
 }

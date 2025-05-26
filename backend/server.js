@@ -27,6 +27,26 @@ server.get("/dashboard", (req, res) => {
     });
 });
 
+server.post("/dashboard", (req, res) => {
+    const newBook = req.body;
+
+    fs.readFile(filePath, "utf8", (err, jsonData) => {
+        if (err) return res.status(500).json({ error: "Error during the file reading" });
+
+        let books = JSON.parse(jsonData);
+
+        const maxID = books.reduce((max, book) => (book.id > max ? book.id : max), 0);
+        newBook.id = maxID + 1
+
+        books.push(newBook);
+
+        fs.writeFile(filePath, JSON.stringify(books, null, 2), (err) => {
+            if (err) return res.status(500).json({ error: "Error during file writing" });
+            res.status(201).json(newBook);
+        });
+    });
+});
+
 server.listen(PORT, () => {
     console.log(`Server is listening at port ${PORT}`);
 });

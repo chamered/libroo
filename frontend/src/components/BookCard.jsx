@@ -22,7 +22,7 @@ function BookCard({book}) {
                     <span className={`badge ${badgeColor[book.status]} position-absolute end-0 me-3`}>{badgeText[book.status]}</span>
                     <p className="text-secondary mb-0"><small>by {book.author}</small></p>
                     <div className="my-3">
-                        <select className="form-select" defaultValue={book.rating}>
+                        <select className="form-select" defaultValue={book.rating} disabled>
                             <option value="0">No rating</option>
                             <option value="1">&#8902;</option>
                             <option value="2">&#8902; &#8902;</option>

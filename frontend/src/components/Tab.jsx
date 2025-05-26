@@ -1,29 +1,26 @@
-import { useEffect, useState } from 'react';
 import BookCard from './BookCard';
 
-function Tab({tab}) {
-    const [books, setBooks] = useState([]);
-
-    useEffect(() => {
-        fetch("http://localhost:3001/dashboard")
-            .then(res => res.json())
-            .then(data => setBooks(data))
-            .catch(err => console.error("Error in fetch: ", err));
-    }, []);
-
-    const filteredBooks = books.filter(book => book.status === tab);
-
-    const renderBooks = () => {
-        const booksArr = tab != 0 ? filteredBooks : books;
-        return booksArr.map(book => (
-            <BookCard book={book} key={book.id} />
-        ));
-    }
+function Tab({books, tab}) {
+    const filterBooks = () => {
+        switch(tab) {
+            case "to-read":
+                return books.filter(book => book.status === 1);
+            case "reading":
+                return books.filter(book => book.status === 2);
+            case "read":
+                return books.filter(book => book.status === 3);
+            default:
+                return books;
+        }
+    };
 
     return(
         <div className="container mt-1">
             <div className="row">
-                {renderBooks()}
+                {console.log(filterBooks())}
+                {filterBooks().map(book => (
+                    <BookCard book={book} key={book.id} />
+                ))}
             </div>
         </div>
     );

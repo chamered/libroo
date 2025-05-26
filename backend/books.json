@@ -70,13 +70,5 @@
     "status": 2,
     "rating": 0,
     "notes": "Expecting a dense but rewarding literary journey."
-  },
-  {
-    "id": 10,
-    "title": "Fahrenheit 451",
-    "author": "Ray Bradbury",
-    "status": 3,
-    "rating": 4,
-    "notes": "A thought-provoking critique of censorship and conformity."
   }
 ]
