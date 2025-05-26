@@ -1,6 +1,12 @@
 {
   "name": "libroo",
   "private": true,
+  "scripts": {
+    "start": "concurrently \"npm run dev --prefix frontend\" \"npm run server --prefix backend\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.0"
+  },
   "workspaces": [
     "frontend",
     "backend"

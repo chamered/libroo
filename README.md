@@ -45,6 +45,12 @@ Make sure you have the following installed:
 3. **Start the development servers:**
 
    ```bash
+   npm run start
+   ```
+
+   If the above command doesn't work try this one:
+
+   ```bash
    # Start backend
    cd frontend/
    npm run dev
@@ -108,6 +114,21 @@ libroo/
 - [ ] Edit book system
 - [x] Delete book system 
 - [ ] Responsive design improvements
+
+## 📡 API
+The backend provides a simple REST API for managing your book list. It interacts with a `books.json` file and supports basic CRUD operations. It is developed using express' router and all the routes are defined in the [route handlers folder](./backend/routes/).
+
+**Base URL:** `http://localhost:3001`
+### Endpoints
+- **GET `/dashboard`**  
+    Restituisce la lista dei libri.
+    
+- **POST `/dashboard`**  
+    Aggiunge un nuovo libro.  
+    **Body JSON:** `{ "title": "Titolo", "author": "Autore" }`
+    
+- **DELETE `/dashboard/:id`**  
+    Elimina il libro con ID specifico.
 
 ## 🤝 Contributing
 
