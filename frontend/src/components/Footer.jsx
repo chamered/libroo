@@ -1,7 +1,7 @@
 function Footer() {
     return(
         <footer className="text-center bg-dark text-secondary py-3">
-            &copy; 2025 BookTracker. All rights reserved.
+            &copy; 2025 Libroo. All rights reserved.
         </footer>
     );
 }

@@ -74,7 +74,7 @@ function Home() {
             <div id="how-it-works" className="text-center py-5">
                 <h3 className="fw-bold">How It Works</h3>
                 <p className="text-secondary fw-light">
-                    Get started with BookTracker in just a few simple steps.
+                    Get started with Libroo in just a few simple steps.
                 </p>
 
                 <div className="container mt-5">
@@ -116,7 +116,7 @@ function Home() {
             <div id="stats" className="text-center bg-light py-5">
                 <h3 className="fw-bold">Join Hundreds of Happy Readers</h3>
                 <p className="text-secondary fw-light">
-                    BookTracker helps readers around the world organize their libraries and achieve their reading goals.
+                    Libroo helps readers around the world organize their libraries and achieve their reading goals.
                 </p>
 
                 <div className="container mt-5">
