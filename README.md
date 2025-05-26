@@ -7,7 +7,7 @@
 - 📖 Add, edit, and delete books you've read  
 - 🗂️ Organize your reading list  
 - 🔍 Search and filter books  
-- 📊 Visual overview of your reading activity (future feature)
+- 📊 Visual overview of your reading activity
 
 ## 🛠️ Tech Stack
 
@@ -24,7 +24,7 @@ Follow these steps to run the project locally.
 
 Make sure you have the following installed:
 
-- Node.js (v23 or later)
+- Node.js
 - npm
 
 ### Installation
@@ -55,28 +55,56 @@ Make sure you have the following installed:
    ```
 
    - Frontend will run on [http://localhost:5173](http://localhost:5173)  
-   - Backend will run on [http://localhost:3000](http://localhost:3000)
+   - Backend will run on [http://localhost:3001](http://localhost:3001)
 
 ## 📁 Project Structure (To Be Completed)
 
 ```
 libroo/
 │
-├── frontend/           # React + Bootstrap frontend (Vite-powered)
-│   └── ...
+├── backend/
+│   ├── books.json
+│   ├── package.json
+│   └── server.js
 │
-├── backend/           # Express.js backend
-│   └── ...
+├── frontend/
+│   ├── node_modules/
+│   ├── public/
+│   │   └── icon.svg
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── AddBookForm.jsx
+│   │   │   ├── BookCard.jsx
+│   │   │   ├── Footer.jsx
+│   │   │   ├── Navbar.jsx
+│   │   │   └── Tab.jsx
+│   │   ├── css/
+│   │   │   ├── App.css
+│   │   │   └── index.css
+│   │   ├── pages/
+│   │   │   ├── Dashbard.jsx
+│   │   │   └── Home.jsx
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   ├── eslint.config.js
+│   ├── index.html
+│   ├── package.json
+│   ├── README.md
+│   └── vite.config.js
 │
-└── README.md         # Project documentation
+├── node_modules/
+├── LICENSE
+├── package.lock.json
+├── package.json
+└── README.md
 ```
 
 ## 📌 TODO
 
 - [ ] Login system  
-- [ ] Add book system
+- [x] Add book system
 - [ ] Edit book system
-- [ ] Cancel book system 
+- [x] Delete book system 
 - [ ] Responsive design improvements
 
 ## 🤝 Contributing
