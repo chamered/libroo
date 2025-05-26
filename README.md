@@ -101,6 +101,7 @@ libroo/
 │   └── vite.config.js
 │
 ├── node_modules/
+├── .gitignore
 ├── LICENSE
 ├── package.lock.json
 ├── package.json
