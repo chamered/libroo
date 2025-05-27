@@ -1,7 +1,6 @@
-import { SquarePen } from 'lucide-react'
-import { Trash2 } from 'lucide-react'
+import { SquarePen, Trash2 } from 'lucide-react'
 
-function BookCard({book, onDelete}) {
+function BookCard({book, onDelete, onEdit}) {
     const badgeText = {
         1: "To Read",
         2: "Reading",
@@ -34,7 +33,7 @@ function BookCard({book, onDelete}) {
                     <p className="fw-bold mb-0">Notes:</p>
                     <p className="card-text text-secondary">{book.notes}</p>
                     <div className="d-flex justify-content-end">
-                        <button className="btn btn-light border border-1 me-2"><SquarePen className="text-secondary"/></button>
+                        <button className="btn btn-light border border-1 me-2" onClick={() => onEdit(book)}><SquarePen className="text-secondary"/></button>
                         <button className="btn btn-light border border-1" onClick={() => onDelete(book.id)}><Trash2 className="text-danger"/></button>
                     </div>
                 </div>

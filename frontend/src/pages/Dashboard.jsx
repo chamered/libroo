@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import Tab from "../components/Tab";
 import AddBookForm from "../components/AddBookForm";
+import EditBookForm from "../components/EditBookForm";
 import { Plus, BookCopy, BookText, BookCheck, BookPlus } from 'lucide-react'
 
 function Dashboard() {
     const [activeTab, setActiveTab] = useState("all-books")
-    const [showBookForm, setShwoBookForm] = useState(false);
+    const [showAddBookForm, setShowAddBookForm] = useState(false);
     const [books, setBooks] = useState([]);
+    const [bookToEdit, setBookToEdit] = useState(null);
 
     useEffect(() => {
         fetch("http://localhost:3001/dashboard")
@@ -17,7 +19,7 @@ function Dashboard() {
 
     const handleSaveBook = (newBook) => {
         setBooks(prev => [...prev, newBook]);
-        setShwoBookForm(false);
+        setShowAddBookForm(false);
     }
 
     const handleDeleteBook = (bookID) => {
@@ -37,8 +39,13 @@ function Dashboard() {
             });
     }
 
+    const handleUpdateBook = (updatedBook) => {
+        setBooks(prev => prev.map(book => (book.id === updatedBook.id ? updatedBook : book)))
+        setBookToEdit(null);
+    }
+
     const renderTabContent = () => {
-        return <Tab tab={activeTab} books={books} onDelete={handleDeleteBook}/>
+        return <Tab tab={activeTab} books={books} onDelete={handleDeleteBook} onEdit={(book) => setBookToEdit(book)}/>
     }
 
     return(
@@ -49,7 +56,7 @@ function Dashboard() {
                     <p className="fw-light text-secondary">Track your reading journey</p>
                 </div>
                 <div className="+d-flex align-items-center">
-                    <button type="button" className="btn btn-primary d-flex" onClick={() => setShwoBookForm(true)}><Plus/>Add Book</button>
+                    <button type="button" className="btn btn-primary d-flex" onClick={() => setShowAddBookForm(true)}><Plus/>Add Book</button>
                 </div>
             </div>
             <div className="row mb-3">
@@ -127,7 +134,8 @@ function Dashboard() {
             <div>
                 {renderTabContent()}
             </div>
-            {showBookForm && <AddBookForm onCancel={() => setShwoBookForm(false)} onSave={handleSaveBook}/>}
+            {showAddBookForm && <AddBookForm onCancel={() => setShowAddBookForm(false)} onSave={handleSaveBook}/>}
+            {bookToEdit && <EditBookForm book={bookToEdit} onCancel={() => setBookToEdit(null)} onUpdate={handleUpdateBook}/>}
         </div>
     );
 }

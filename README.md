@@ -84,6 +84,7 @@ libroo/
 │   │   ├── components/
 │   │   │   ├── AddBookForm.jsx
 │   │   │   ├── BookCard.jsx
+│   │   │   ├── EditBookForm.jsx
 │   │   │   ├── Footer.jsx
 │   │   │   ├── Navbar.jsx
 │   │   │   └── Tab.jsx
@@ -130,6 +131,9 @@ The backend provides a simple REST API for managing your book list. It interacts
         "notes": "Notes"    // Optional notes
      }
      ```
+
+- **PUT `/dashboard/:id`**  
+    Updates the book with the specified `id`.
     
 - **DELETE `/dashboard/:id`**  
     Deletes the book with the specified `id`.
@@ -138,9 +142,10 @@ The backend provides a simple REST API for managing your book list. It interacts
 
 - [ ] Login system  
 - [x] Add book system
-- [ ] Edit book system
+- [x] Edit book system
 - [x] Delete book system 
 - [ ] Responsive design improvements
+- [ ] Book suggestions from AI (Future feature)
 
 ## 🤝 Contributing
 
