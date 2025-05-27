@@ -45,18 +45,19 @@ Make sure you have the following installed:
 3. **Start the development servers:**
 
    ```bash
+   # Start both frontend and backend
    npm run start
    ```
 
    If the above command doesn't work try this one:
 
    ```bash
-   # Start backend
+   # Start frontend
    cd frontend/
    npm run dev
 
    # In a new terminal tab/window, start backend
-   cd ../backend
+   cd backend/
    node server.js
    ```
 
