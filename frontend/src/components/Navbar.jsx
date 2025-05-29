@@ -1,13 +1,19 @@
+import { Link, useLocation } from 'react-router-dom';
 import { SquareLibrary } from 'lucide-react'
 
 function Navbar() {
+    const location = useLocation();
+    const currentPath = location.pathname;
+
     return(
-        <nav className="navbar bg-body-tertiary">
+        <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top">
             <div className="container-fluid">
-                <a className="navbar-brand fw-bold d-flex align-items-center" href="/"><SquareLibrary className="text-primary" size={32}/>Libroo</a>
-                <div>
-                    <button className="btn btn-outline-primary me-2">Login</button>
-                    <button className="btn btn-primary">Sign Up</button>
+                <Link className="navbar-brand fw-bold d-flex align-items-center" to="/"><SquareLibrary className="text-primary" size={32}/>Libroo</Link>
+                <div className="collapse navbar-collapse">
+                    <div className="navbar-nav">
+                        <Link className={`nav-link ${currentPath === "/" ? "active fw-medium" : ""}`} to="/">Home</Link>
+                        <Link className={`nav-link ${currentPath === "/dashboard" ? "active fw-medium" : ""}`} to="/dashboard">Dashboard</Link>
+                    </div>
                 </div>
             </div>
         </nav>
