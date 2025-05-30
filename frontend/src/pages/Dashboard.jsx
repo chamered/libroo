@@ -11,7 +11,7 @@ function Dashboard() {
     const [bookToEdit, setBookToEdit] = useState(null);
 
     useEffect(() => {
-        fetch("http://localhost:3001/dashboard")
+        fetch("https://libroo.onrender.com/dashboard")
             .then(res => res.json())
             .then(setBooks)
             .catch(err => console.error("Error in fetch: ", err));
@@ -26,7 +26,7 @@ function Dashboard() {
         const confirmDelete = window.confirm("Are you sure you want to delete this book?");
         if (!confirmDelete) return;
 
-        fetch(`http://localhost:3001/dashboard/${bookID}`, {
+        fetch(`https://libroo.onrender.com/dashboard/${bookID}`, {
             method: "DELETE",
         })
             .then(res => {

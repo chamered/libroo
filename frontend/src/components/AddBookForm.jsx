@@ -18,7 +18,7 @@ function AddBookForm({onCancel, onSave}) {
             notes,
         };
 
-        fetch("http://localhost:3001/dashboard", {
+        fetch("https://libroo.onrender.com/dashboard", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(newBook),

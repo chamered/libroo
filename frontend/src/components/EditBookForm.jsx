@@ -19,7 +19,7 @@ function EditBookForm({book, onCancel, onUpdate}) {
             notes,
         };
 
-        fetch(`http://localhost:3001/dashboard/${book.id}`, {
+        fetch(`https://libroo.onrender.com/dashboard/${book.id}`, {
             method: "PUT",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(updatedBook),
