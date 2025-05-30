@@ -6,7 +6,7 @@ function Navbar() {
     const currentPath = location.pathname;
 
     return(
-        <nav className="navbar navbar-expand-sm bg-body-tertiary fixed-top">
+        <nav className="navbar navbar-expand-sm bg-body-tertiary">
             <div className="container-fluid">
                 <Link className="navbar-brand fw-bold d-flex align-items-center" to="/"><SquareLibrary className="text-primary" size={32}/>Libroo</Link>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

@@ -6,7 +6,7 @@ import { Clock } from 'lucide-react'
 function Home() {
     return(
         <>
-            <div className="text-white text-center bg-primary bg-gradient py-5" style={{marginTop: "57px"}}>
+            <div className="text-white text-center bg-primary bg-gradient py-5">
                 <h1 className="fw-bold">Track Your Reading Journey</h1>
                 <p className="fw-light">
                     Organize your personal library, set reading goals, and discover your next favorite book. <br/>

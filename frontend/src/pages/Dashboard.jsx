@@ -49,7 +49,7 @@ function Dashboard() {
     }
 
     return(
-        <div className="container" style={{marginTop: "75px"}}>
+        <div className="container mt-4">
             <div className="d-flex justify-content-between">
                 <div>
                     <h1 className="fw-bold mb-0">My Books</h1>
