@@ -2,6 +2,10 @@
 
 **Libroo** is a modern web application that allows you to track the books you've read, helping you stay organized and motivated in your reading journey.
 
+## 🌐 Live Demo
+
+The site is now online at: [https://libroo.netlify.app](https://libroo.netlify.app)
+
 ## ✨ Features
 
 - 📖 Add, edit, and delete books you've read  
@@ -62,7 +66,7 @@ Make sure you have the following installed:
    ```
 
    - Frontend will run on [http://localhost:5173](http://localhost:5173)  
-   - Backend will run on [http://localhost:3001](http://localhost:3001)
+   - Backend will run on [https://libroo.onrender.com](https://libroo.onrender.com)
 
 ## 📁 Project Structure
 
@@ -113,7 +117,7 @@ libroo/
 ## 📡 API
 The backend provides a simple REST API for managing your book list. It interacts with a `books.json` file and supports basic CRUD operations. It is developed using express' router and all the routes are defined in the [route handlers folder](./backend/routes/).
 
-**Base URL:** `http://localhost:3001`
+**Base URL:** `https://libroo.onrender.com`
 ### Endpoints
 - **GET `/dashboard`**  
     Returns the list of all books.
