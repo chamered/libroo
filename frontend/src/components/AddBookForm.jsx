@@ -18,6 +18,7 @@ function AddBookForm({onCancel, onSave}) {
             notes,
         };
 
+        // Change the link with "http://localhost:3001/dashboard" if you run the backend locally
         fetch("https://libroo.onrender.com/dashboard", {
             method: "POST",
             headers: {"Content-Type": "application/json"},

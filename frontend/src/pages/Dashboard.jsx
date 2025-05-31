@@ -11,6 +11,7 @@ function Dashboard() {
     const [bookToEdit, setBookToEdit] = useState(null);
 
     useEffect(() => {
+        // Change the link with "http://localhost:3001/dashboard" if you run the backend locally
         fetch("https://libroo.onrender.com/dashboard")
             .then(res => res.json())
             .then(setBooks)
@@ -26,6 +27,7 @@ function Dashboard() {
         const confirmDelete = window.confirm("Are you sure you want to delete this book?");
         if (!confirmDelete) return;
 
+        // Change the link with "http://localhost:3001/dashboard/${book.id}" if you run the backend locally
         fetch(`https://libroo.onrender.com/dashboard/${bookID}`, {
             method: "DELETE",
         })

@@ -19,6 +19,7 @@ function EditBookForm({book, onCancel, onUpdate}) {
             notes,
         };
 
+        // Change the link with "http://localhost:3001/dashboard/${book.id}" if you run the backend locally
         fetch(`https://libroo.onrender.com/dashboard/${book.id}`, {
             method: "PUT",
             headers: {"Content-Type": "application/json"},
