@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Tab from "../components/Tab";
 import AddBookForm from "../components/AddBookForm";
 import EditBookForm from "../components/EditBookForm";
-import { Plus, BookCopy, BookText, BookCheck, BookPlus } from 'lucide-react'
+import { BookCopy, BookText, BookCheck, BookPlus } from 'lucide-react'
 
 function Dashboard() {
     const [activeTab, setActiveTab] = useState("all-books")
@@ -12,7 +12,7 @@ function Dashboard() {
 
     useEffect(() => {
         // Change the link with "http://localhost:3001/dashboard" if you run the backend locally
-        fetch("https://libroo.onrender.com/dashboard")
+        fetch("http://localhost:3001/dashboard")
             .then(res => res.json())
             .then(setBooks)
             .catch(err => console.error("Error in fetch: ", err));
@@ -20,15 +20,14 @@ function Dashboard() {
 
     const handleSaveBook = (newBook) => {
         setBooks(prev => [...prev, newBook]);
-        setShowAddBookForm(false);
     }
 
     const handleDeleteBook = (bookID) => {
         const confirmDelete = window.confirm("Are you sure you want to delete this book?");
         if (!confirmDelete) return;
 
-        // Change the link with "http://localhost:3001/dashboard/${book.id}" if you run the backend locally
-        fetch(`https://libroo.onrender.com/dashboard/${bookID}`, {
+        // Change the link with "http://localhost:3001/dashboard/${bookID}" if you run the backend locally
+        fetch(`http://localhost:3001/dashboard/${bookID}`, {
             method: "DELETE",
         })
             .then(res => {
@@ -57,8 +56,8 @@ function Dashboard() {
                     <h1 className="fw-bold mb-0">My Books</h1>
                     <p className="fw-light text-secondary">Track your reading journey</p>
                 </div>
-                <div className="+d-flex align-items-center">
-                    <button type="button" className="btn btn-primary d-flex" onClick={() => setShowAddBookForm(true)}><Plus/>Add Book</button>
+                <div className="d-flex align-items-center">
+                    <AddBookForm onSave={handleSaveBook}/>
                 </div>
             </div>
             <div className="row mb-3">
@@ -136,7 +135,6 @@ function Dashboard() {
             <div>
                 {renderTabContent()}
             </div>
-            {showAddBookForm && <AddBookForm onCancel={() => setShowAddBookForm(false)} onSave={handleSaveBook}/>}
             {bookToEdit && <EditBookForm book={bookToEdit} onCancel={() => setBookToEdit(null)} onUpdate={handleUpdateBook}/>}
         </div>
     );

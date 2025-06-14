@@ -1,11 +1,29 @@
-import { useState } from "react";
+import { useState } from 'react';
+import { Modal, Button } from 'react-bootstrap';
+import { Plus } from 'lucide-react'
 
-function AddBookForm({onCancel, onSave}) {
+function AddBookForm({onSave}) {
+    const [show, setShow] = useState(false);
+
+    const handleShow = () => setShow(true);
+    const handleClose = () => {
+        setShow(false);
+        resetForm();
+    }
+
     const [title, setTitle] = useState("");
     const [author, setAuthor] = useState("");
     const [status, setStatus] = useState(1);
     const [rating, setRating] = useState(0);
     const [notes, setNotes] = useState("");
+
+    const resetForm = () => {
+        setTitle("");
+        setAuthor("");
+        setStatus(1);
+        setRating(0);
+        setNotes("");
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -19,7 +37,7 @@ function AddBookForm({onCancel, onSave}) {
         };
 
         // Change the link with "http://localhost:3001/dashboard" if you run the backend locally
-        fetch("https://libroo.onrender.com/dashboard", {
+        fetch("http://localhost:3001/dashboard", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(newBook),
@@ -38,12 +56,16 @@ function AddBookForm({onCancel, onSave}) {
     }
 
     return(
-        <div className="card position-fixed top-50 start-50" style={{translate: "-50% -50%"}}>
-            <div className="card-header">
-                <h5 className="card-title mb-0 py-2">Add New Book</h5>
-            </div>
-            <ul className="list-group list-group-flush">
-                <li className="list-group-item">
+        <>
+            <Button variant="primary" className="btn btn-primary d-flex" onClick={handleShow}>
+                <Plus className="me-1"/>Add Book
+            </Button>
+
+            <Modal show={show} onHide={handleClose} centered>
+                <Modal.Header data-bs-theme="dark" className="bg-primary text-white" closeButton>
+                    <Modal.Title>Add a New Book</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
                     <form className="row" onSubmit={handleSubmit}>
                         <div className="col-12 mt-3">
                             <label htmlFor="title" className="form-label">Book Title *</label>
@@ -76,14 +98,14 @@ function AddBookForm({onCancel, onSave}) {
                             <label htmlFor="notes" className="form-label">Notes (Optional)</label>
                             <textarea className="form-control" rows={3} placeholder="A tense, post-apocalyptic survival story." value={notes} onChange={e => setNotes(e.target.value)}></textarea>
                         </div>
-                        <div className="mb-3 d-flex justify-content-end">
-                            <button type="button" className="btn btn-outline-dark me-2" onClick={onCancel}>Cancel</button>
-                            <button type="submit" className="btn btn-primary">Save Book</button>
+                        <div className="btn-group mb-3" role="group">
+                            <button type="button" className="btn btn-outline-dark" onClick={handleClose}>Cancel</button>
+                            <button type="submit" className="btn btn-outline-primary" onClick={handleClose}>Save Book</button>
                         </div>
                     </form>
-                </li>
-            </ul>
-        </div>
+                </Modal.Body>
+            </Modal>
+        </>
     );
 }
 
