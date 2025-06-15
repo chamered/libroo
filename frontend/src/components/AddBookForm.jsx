@@ -1,15 +1,17 @@
 import { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
-import { Plus } from 'lucide-react'
+import { Plus } from 'lucide-react';
 
-function AddBookForm({onSave}) {
+function AddBookForm({ onSave }) {
     const [show, setShow] = useState(false);
+    const [validated, setValidated] = useState(false);
 
     const handleShow = () => setShow(true);
     const handleClose = () => {
         setShow(false);
         resetForm();
-    }
+        setValidated(false);
+    };
 
     const [title, setTitle] = useState("");
     const [author, setAuthor] = useState("");
@@ -23,10 +25,16 @@ function AddBookForm({onSave}) {
         setStatus(1);
         setRating(0);
         setNotes("");
-    }
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const form = e.currentTarget;
+        if (!form.checkValidity()) {
+            e.stopPropagation();
+            setValidated(true);
+            return;
+        }
 
         const newBook = {
             title,
@@ -36,10 +44,9 @@ function AddBookForm({onSave}) {
             notes,
         };
 
-        // Change the link with "http://localhost:3001/dashboard" if you run the backend locally
         fetch("http://localhost:3001/dashboard", {
             method: "POST",
-            headers: {"Content-Type": "application/json"},
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newBook),
         })
             .then(res => {
@@ -48,17 +55,18 @@ function AddBookForm({onSave}) {
             })
             .then(data => {
                 onSave(data);
+                handleClose();
             })
             .catch(err => {
                 console.error(err);
                 alert("Error during book saving");
             });
-    }
+    };
 
-    return(
+    return (
         <>
             <Button variant="primary" className="btn btn-primary d-flex" onClick={handleShow}>
-                <Plus className="me-1"/>Add Book
+                <Plus className="me-1" />Add Book
             </Button>
 
             <Modal show={show} onHide={handleClose} centered>
@@ -66,14 +74,36 @@ function AddBookForm({onSave}) {
                     <Modal.Title>Add a New Book</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <form className="row" onSubmit={handleSubmit}>
+                    <form className={`row needs-validation ${validated ? 'was-validated' : ''}`} noValidate onSubmit={handleSubmit}>
                         <div className="col-12 mt-3">
                             <label htmlFor="title" className="form-label">Book Title *</label>
-                            <input type="text" className="form-control" placeholder="The 100" value={title} onChange={e => setTitle(e.target.value)}/>
+                            <input
+                                required
+                                type="text"
+                                className="form-control"
+                                id="title"
+                                placeholder="The 100"
+                                value={title}
+                                onChange={e => setTitle(e.target.value)}
+                            />
+                            <div className="invalid-feedback">
+                                Please provide a book title.
+                            </div>
                         </div>
                         <div className="col-12 mt-3">
                             <label htmlFor="author" className="form-label">Author *</label>
-                            <input type="text" className="form-control" placeholder="Kass Morgan" value={author} onChange={e => setAuthor(e.target.value)}/>
+                            <input
+                                required
+                                type="text"
+                                className="form-control"
+                                id="author"
+                                placeholder="Kass Morgan"
+                                value={author}
+                                onChange={e => setAuthor(e.target.value)}
+                            />
+                            <div className="invalid-feedback">
+                                Please provide the author's name.
+                            </div>
                         </div>
                         <div className="col-12 mt-3">
                             <label htmlFor="readingStatus" className="form-label">Reading Status</label>
@@ -96,11 +126,17 @@ function AddBookForm({onSave}) {
                         </div>
                         <div className="col-12 my-3">
                             <label htmlFor="notes" className="form-label">Notes (Optional)</label>
-                            <textarea className="form-control" rows={3} placeholder="A tense, post-apocalyptic survival story." value={notes} onChange={e => setNotes(e.target.value)}></textarea>
+                            <textarea
+                                className="form-control"
+                                rows={3}
+                                placeholder="A tense, post-apocalyptic survival story."
+                                value={notes}
+                                onChange={e => setNotes(e.target.value)}
+                            ></textarea>
                         </div>
                         <div className="btn-group mb-3" role="group">
                             <button type="button" className="btn btn-outline-dark" onClick={handleClose}>Cancel</button>
-                            <button type="submit" className="btn btn-outline-primary" onClick={handleClose}>Save Book</button>
+                            <button type="submit" className="btn btn-outline-primary">Save Book</button>
                         </div>
                     </form>
                 </Modal.Body>
